@@ -103,33 +103,52 @@ namespace AirSimUnity {
 
         private static bool SetPose(AirSimPose pose, bool ignoreCollision, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             vehicle.VehicleInterface.SetPose(pose, ignoreCollision);
             return true;
         }
 
         private static AirSimPose GetPose(string vehicleName) {
+            Debug.Log("VehicleCompanion::GetPose  " + vehicleName);
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetPose();
         }
 
         private static CollisionInfo GetCollisionInfo(string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetCollisionInfo();
         }
 
         private static AirSimRCData GetRCData(string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetRCData();
         }
 
         private static ImageResponse GetSimImages(ImageRequest request, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetSimulationImages(request);
         }
 
         private static UnityTransform GetTransformFromUnity(string vehicleName)
         {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetTransform();
         }
 
@@ -145,63 +164,100 @@ namespace AirSimUnity {
         private static AirSimVector GetVelocity(string vehicleName)
         {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetVelocity();
         }
 
         private static RayCastHitResult GetRayCastHit(AirSimVector start, AirSimVector end, string vehicleName)
         {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetRayCastHit(start, end);
         }
 
         private static bool SetRotorSpeed(int rotorIndex, RotorInfo rotorInfo, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetRotorSpeed(rotorIndex, rotorInfo);
         }
 
         private static bool SetEnableApi(bool enableApi, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetEnableApi(enableApi);
         }
 
         private static bool SetCarApiControls(CarControls controls, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetCarControls(controls);
         }
 
         private static CarState GetCarState(string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetCarState();
         }
 
         private static CameraInfo GetCameraInfo(string cameraName, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetCameraInfo(cameraName);
         }
 
         private static bool SetCameraPose(string cameraName, AirSimPose pose, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetCameraPose(cameraName, pose);
         }
 
         private static bool SetCameraFoV(string cameraName, float fov_degrees, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetCameraFoV(cameraName, fov_degrees);
         }
 
         private static bool SetDistortionParam(string cameraName, string paramName, float value, string vehicleName) {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.SetDistortionParam(cameraName, paramName, value);
         }
 
         private static bool GetDistortionParams(string cameraName, string vehicleName)
         {
             var vehicle = Vehicles.Find(element => element.vehicleName == vehicleName);
+            if (vehicle == null) {
+                vehicle = Vehicles[0];
+            }
             return vehicle.VehicleInterface.GetDistortionParams(cameraName);
         }
 
         private static bool PrintLogMessage(string message, string messageParams, string vehicleName, int severity) {
             var vehicle = Vehicles[0]; //we just let first vehicle print the message
+            if (vehicle == null)
+            {
+                return true;
+            }
             return vehicle.VehicleInterface.PrintLogMessage(message, messageParams, vehicleName, severity);
         }
 
